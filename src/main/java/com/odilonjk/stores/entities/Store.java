@@ -1,6 +1,7 @@
 package com.odilonjk.stores.entities;
 
 import org.jnosql.artemis.Column;
+import org.jnosql.artemis.Convert;
 import org.jnosql.artemis.Entity;
 import org.jnosql.artemis.Id;
 
@@ -10,7 +11,8 @@ import java.io.Serializable;
 public class Store implements Serializable {
 
     @Id
-    private long id;
+    @Convert(ObjectIdConverter.class)
+    private String id;
 
     @Column
     private String name;
@@ -27,11 +29,11 @@ public class Store implements Serializable {
 
     public static class StoreBuilder {
 
-        private long id;
+        private String id;
         private String name;
         private String description;
 
-        public StoreBuilder withId(long id) {
+        public StoreBuilder withId(String id) {
             this.id = id;
             return this;
         }
