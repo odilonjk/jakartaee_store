@@ -16,7 +16,7 @@ public class StoreService {
     @Inject
     private StoreRepository storeRepository;
 
-    public Store findById(long id) {
+    public Store findById(String id) {
         Optional<Store> optionalStore = storeRepository.findById(id);
         return optionalStore.orElseThrow(EntityNotFoundException::new);
     }

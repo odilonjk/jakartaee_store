@@ -19,7 +19,7 @@ public class StoreResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@PathParam("id") long id) {
+    public Response findById(@PathParam("id") String id) {
         Store store = storeService.findById(id);
         return Response.ok().entity(store).build();
     }
