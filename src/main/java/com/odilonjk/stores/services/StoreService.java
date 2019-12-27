@@ -2,7 +2,6 @@ package com.odilonjk.stores.services;
 
 
 import com.odilonjk.stores.entities.Store;
-import com.odilonjk.stores.entities.Store.StoreBuilder;
 import com.odilonjk.stores.repositories.StoreRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -21,8 +20,7 @@ public class StoreService {
         return optionalStore.orElseThrow(EntityNotFoundException::new);
     }
 
-    public void create(String name) {
-        Store store = new StoreBuilder().withName(name).build();
+    public void create(Store store) {
         storeRepository.save(store);
     }
 }

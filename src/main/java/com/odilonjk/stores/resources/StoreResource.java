@@ -21,13 +21,13 @@ public class StoreResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") String id) {
         Store store = storeService.findById(id);
-        return Response.ok().entity(store).build();
+        return Response.ok(store).build();
     }
 
     @POST
-    @Path("/{name}")
-    public Response create(@PathParam("name") String name) {
-        storeService.create(name);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(Store store) {
+        storeService.create(store);
         return Response.accepted().build();
     }
 
